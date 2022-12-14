@@ -10,7 +10,6 @@ function App() {
 
 	function getTodos(evt) {
 		evt.preventDefault();
-
 		const obj = {
 			id: todo.length,
 			userName: value,
@@ -22,7 +21,7 @@ function App() {
 	function clickedFn(evt) {
 		if (evt.target.matches('.btn-edit')) {
 			const editedTodoId = Number(evt.target.dataset.id);
-			todo[editedTodoId].userName = prompt();
+			todo[editedTodoId].userName = prompt('Edit Your Todo');
 			setTodo([...todo]);
 		}
 
@@ -36,8 +35,7 @@ function App() {
 		}
 		if (evt.target.matches('.input-checkbox')) {
 			const inputCheckboxId = Number(evt.target.dataset.id);
-			todo[inputCheckboxId].isComplete =
-				!todo[inputCheckboxId].isComplete;
+			todo[inputCheckboxId].isComplete = !todo[inputCheckboxId].isComplete;
 			if (todo[inputCheckboxId].isComplete === true) {
 				console.log(evt.target);
 			}
