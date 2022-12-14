@@ -2,13 +2,7 @@ import { useState } from 'react';
 
 function App() {
 	let [value, setValue] = useState('');
-	let [todo, setTodo] = useState([
-		{
-			id: 1,
-			userName: 'Asilbek',
-			isComplete: false,
-		},
-	]);
+	let [todo, setTodo] = useState([]);
 
 	function inpChange(evt) {
 		setValue(evt.target.value);
@@ -18,18 +12,17 @@ function App() {
 		evt.preventDefault();
 
 		const obj = {
-			id: todo[todo.length - 1].id + 1,
+			id: todo.length,
 			userName: value,
 			isComplete: false,
 		};
 		setTodo([...todo, obj]);
-		console.log(obj);
 	}
 
 	function clickedFn(evt) {
 		if (evt.target.matches('.btn-edit')) {
 			const editedTodoId = Number(evt.target.dataset.id);
-			todo[editedTodoId - 1].userName = prompt();
+			todo[editedTodoId].userName = prompt();
 			setTodo([...todo]);
 		}
 
@@ -43,9 +36,9 @@ function App() {
 		}
 		if (evt.target.matches('.input-checkbox')) {
 			const inputCheckboxId = Number(evt.target.dataset.id);
-			todo[inputCheckboxId - 1].isComplete =
-				!todo[inputCheckboxId - 1].isComplete;
-			if (todo[inputCheckboxId - 1].isComplete === true) {
+			todo[inputCheckboxId].isComplete =
+				!todo[inputCheckboxId].isComplete;
+			if (todo[inputCheckboxId].isComplete === true) {
 				console.log(evt.target);
 			}
 		}
